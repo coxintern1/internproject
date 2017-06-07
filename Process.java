@@ -5,9 +5,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 public class Process{
+
+
+    // This will call the service to create process Instance for the process.
     public static ProcessInstance getInstanceByName(String processName)throws IOException{
+        CreateLog createLog = new CreateLog();
         URL url = new URL("http://localhost:8081/creatProcessInstance");
         //Insert your JSON query request
         String query = "{'ProcessName': " + "'" + processName + "'}";
@@ -34,7 +37,12 @@ public class Process{
             BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
             String l = null;
             while ((l=br.readLine())!=null) {
-                Msj(l);
+                l=l.replace("\"", " ");
+                l=l.replace("{", " ");
+                String[] parts = l.split(" ");
+                Msj("Hey this needs to be checked :" );
+                Msj(parts[5]);
+                screateLog.createLogForProcessInstance(parts[5]);
             }
             br.close();
         } catch (Exception e){

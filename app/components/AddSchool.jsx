@@ -8,7 +8,31 @@ module.exports = React.createClass({
           tagline:""
       }  
     },
+    
+ 
+  
+/*    addSchool:function(e){
+     var name = e.target.name;
+      var state = this.state;
+       $.ajax({
+
+      url: "http://localhost:8081/api",
+      dataType: 'json',
+      type: 'POST',
+      data: e.target.name,
+      success: function(data) {
+        //We set the state again after submission, to update with the submitted data
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    })
+},*/
+
 addSchool:function(e){
+    //e.preventDefault();
+      //  actions.addSchool(this.state);
 var name = e.target.name;
       var state = this.state;
       var lookup = {
@@ -58,9 +82,18 @@ var name = e.target.name;
                     <label className="control-label" htmlFor="tagline">Process Description:</label>
                     <input type="text" className="form-control" id="tagline" name="tagline" value={this.state.address} onChange={this.handleInputChange} placeholder="Process Description" />                    
                 </div>
+        {/*        <div className="form-group">
+                     <select>
+          <option value="none"></option>
+          <option value="scholarships">Scholarships</option>
+          <option value="other">Other</option>
+        </select>
+        </div>*/}
+               
                 <div className="form-group">
                     <button className="btn" type="submit">Add Process</button>
                 </div>
+                 
             </form>
         )
     }
